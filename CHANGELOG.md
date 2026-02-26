@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2026-02-25
+
+### Added
+- 16x16 and 32x32 favicon PNGs for browser tab icon
+- favicon.ico in root for automatic browser detection
+- New icon sizes cached in service worker
+
+### Fixed
+- Favicon now displays in browser tab (added proper small sizes)
+- Changed asset paths from absolute to relative for local file:// compatibility
+
+## [0.4.0] - 2026-02-25
+
+### Added
+- CLAUDE.md project conventions file
+- Reddit social link (between GitHub and Email)
+- SMS social link (sms: protocol)
+- Hover tooltips on all social icons
+- .gitignore for system files
+
 ## [0.3.0] - 2026-02-25
 
 ### Changed

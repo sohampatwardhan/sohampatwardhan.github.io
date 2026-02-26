@@ -1,5 +1,5 @@
 const CACHE_NAME = 'sp-v1';
-const ASSETS = ['/', '/index.html', '/manifest.json', '/icons/icon-192.png', '/icons/icon-512.png'];
+const ASSETS = ['/', '/index.html', '/manifest.json', '/favicon.ico', '/icons/icon-16.png', '/icons/icon-32.png', '/icons/icon-192.png', '/icons/icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));

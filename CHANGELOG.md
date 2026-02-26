@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2026-02-25
+
+### Added
+- Downloadable VCF contact card (contact.vcf) with name, phone, email, and social URLs
+- Contact card download icon in social links bar with hover tooltip
+
 ## [0.5.0] - 2026-02-25
 
 ### Added

@@ -1,0 +1,26 @@
+# Internal file links and external URLs are both checked.
+# Social hosts often answer 403, 429, or 999 to automated clients, so those
+# hosts are skipped. The same codes are accepted for any other host so a
+# rate limit does not fail the build. tel: and sms: are not HTTP links.
+
+no_progress = true
+verbose = "warn"
+timeout = 20
+max_retries = 2
+max_concurrency = 8
+
+accept = ["200..=299", "403", "429", "999"]
+
+exclude = [
+  '^https?://([a-z0-9-]+\\.)*linkedin\\.com',
+  '^https?://([a-z0-9-]+\\.)*x\\.com',
+  '^https?://([a-z0-9-]+\\.)*twitter\\.com',
+  '^https?://([a-z0-9-]+\\.)*instagram\\.com',
+  '^https?://([a-z0-9-]+\\.)*facebook\\.com',
+  '^https?://([a-z0-9-]+\\.)*reddit\\.com',
+  '^https?://([a-z0-9-]+\\.)*wa\\.me',
+  '^sms:',
+  '^tel:',
+]
+
+exclude_path = ['(^|/)\\.git/', '(^|/)\\.playwright-mcp/']

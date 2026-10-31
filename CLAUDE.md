@@ -18,6 +18,6 @@ Personal website for Soham Patwardhan, hosted on GitHub Pages at sohampatwardhan
 
 ## Conventions
 - Always update CHANGELOG.md when committing changes
-- Social link order: LinkedIn, GitHub, Reddit, Email, Phone, SMS, WhatsApp
+- Social link order: LinkedIn, GitHub, Email, Phone, SMS, WhatsApp
 - Mobile breakpoint: 600px
 - Star count: 3000 desktop, 1500 mobile

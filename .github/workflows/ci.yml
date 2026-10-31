@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Validate site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+
+      - name: Validate HTML
+        run: npx --yes html-validate@11.17.0 index.html
+
+      - name: Lint CSS
+        run: |
+          npm install --prefix "${RUNNER_TEMP}/lint" \
+            stylelint@17.16.0 \
+            stylelint-config-standard@40.0.0 \
+            postcss-html@2.0.0
+          ln -sfn "${RUNNER_TEMP}/lint/node_modules" node_modules
+          ./node_modules/.bin/stylelint index.html
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          lycheeVersion: v0.24.2
+          fail: true
+          args: --config lychee.toml --root-dir "${{ github.workspace }}" --no-progress .

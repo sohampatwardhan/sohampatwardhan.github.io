@@ -1,40 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8">
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
+        >
         <title>Soham Patwardhan</title>
         <meta
             name="description"
             content="Soham Patwardhan's personal website"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        >
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
             rel="stylesheet"
-        />
-        <meta name="theme-color" content="#000000" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        >
+        <meta name="theme-color" content="#000000">
+        <meta name="apple-mobile-web-app-capable" content="yes">
         <meta
             name="apple-mobile-web-app-status-bar-style"
             content="black-translucent"
-        />
-        <meta name="apple-mobile-web-app-title" content="Soham P" />
-        <link rel="manifest" href="manifest.json" />
-        <link rel="apple-touch-icon" href="icons/icon-192.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+        >
+        <meta name="apple-mobile-web-app-title" content="Soham P">
+        <link rel="manifest" href="manifest.json">
+        <link rel="apple-touch-icon" href="icons/icon-192.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
         <style>
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
+
             body {
                 font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI",
                     Roboto, sans-serif;
@@ -42,27 +43,29 @@
                 background:
                     radial-gradient(
                         ellipse at 20% 80%,
-                        rgba(25, 10, 60, 0.8) 0%,
+                        rgb(25 10 60 / 80%) 0%,
                         transparent 50%
                     ),
                     radial-gradient(
                         ellipse at 80% 20%,
-                        rgba(10, 20, 60, 0.7) 0%,
+                        rgb(10 20 60 / 70%) 0%,
                         transparent 50%
                     ),
                     radial-gradient(
                         ellipse at 50% 50%,
-                        rgba(15, 10, 45, 0.5) 0%,
+                        rgb(15 10 45 / 50%) 0%,
                         transparent 70%
                     ),
                     #030108;
             }
+
             canvas {
                 display: block;
                 position: fixed;
                 top: 0;
                 left: 0;
             }
+
             .overlay {
                 position: fixed;
                 top: 0;
@@ -76,12 +79,14 @@
                 pointer-events: none;
                 z-index: 1;
             }
+
             button,
             input,
             textarea,
             select {
                 font-family: inherit;
             }
+
             .title {
                 font-size: clamp(28px, 5vw, 64px);
                 font-weight: 300;
@@ -89,19 +94,21 @@
                 color: #fff;
                 text-align: center;
                 opacity: 0;
-                animation: fadeIn 2s ease-out 0.5s forwards;
-                text-shadow: 0 0 40px rgba(140, 160, 255, 0.3);
+                animation: fade-in 2s ease-out 0.5s forwards;
+                text-shadow: 0 0 40px rgb(140 160 255 / 30%);
             }
+
             .subtitle {
                 font-size: clamp(12px, 1.8vw, 22px);
                 font-weight: 300;
                 letter-spacing: 0.4em;
                 text-transform: uppercase;
-                color: rgba(180, 190, 255, 0.6);
+                color: rgb(180 190 255 / 60%);
                 margin-top: 20px;
                 opacity: 0;
-                animation: fadeIn 2s ease-out 1.5s forwards;
+                animation: fade-in 2s ease-out 1.5s forwards;
             }
+
             .top-bar {
                 position: fixed;
                 top: 0;
@@ -110,27 +117,30 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 24px 32px;
+                padding: max(24px, env(safe-area-inset-top)) max(32px, env(safe-area-inset-right)) 24px max(32px, env(safe-area-inset-left));
                 z-index: 2;
                 pointer-events: none;
             }
+
             .name {
                 font-size: clamp(14px, 1.6vw, 20px);
                 font-weight: 400;
                 letter-spacing: 0.12em;
                 white-space: nowrap;
-                color: rgba(255, 255, 255, 0.85);
+                color: rgb(255 255 255 / 85%);
                 opacity: 0;
-                animation: fadeIn 1.5s ease-out 0.3s forwards;
+                animation: fade-in 1.5s ease-out 0.3s forwards;
             }
+
             .socials {
                 display: flex;
                 gap: 20px;
                 align-items: center;
                 pointer-events: auto;
                 opacity: 0;
-                animation: fadeIn 1.5s ease-out 0.6s forwards;
+                animation: fade-in 1.5s ease-out 0.6s forwards;
             }
+
             .socials a {
                 display: flex;
                 align-items: center;
@@ -138,23 +148,26 @@
                 width: 36px;
                 height: 36px;
                 border-radius: 50%;
-                color: rgba(255, 255, 255, 0.6);
+                color: rgb(255 255 255 / 60%);
                 transition:
                     color 0.3s,
                     background 0.3s,
                     transform 0.3s;
                 text-decoration: none;
             }
+
             .socials a:hover {
                 color: #fff;
-                background: rgba(255, 255, 255, 0.1);
+                background: rgb(255 255 255 / 10%);
                 transform: scale(1.15);
             }
+
             .socials a svg {
                 width: 18px;
                 height: 18px;
-                fill: currentColor;
+                fill: currentcolor;
             }
+
             .footer {
                 position: fixed;
                 bottom: 0;
@@ -167,59 +180,63 @@
                 font-size: clamp(10px, 1.2vw, 13px);
                 font-weight: 300;
                 letter-spacing: 0.15em;
-                color: rgba(255, 255, 255, 0.3);
+                color: rgb(255 255 255 / 30%);
                 opacity: 0;
-                animation: fadeIn 2s ease-out 2s forwards;
+                animation: fade-in 2s ease-out 2s forwards;
             }
+
             /* Stack the header before the name meets the icon row. */
-            @media (max-width: 680px) {
+            @media (width <= 680px) {
                 .top-bar {
                     flex-direction: column;
                     align-items: center;
                     gap: 12px;
                 }
             }
+
             /* Mobile styles */
-            @media (max-width: 600px) {
+            @media (width <= 600px) {
                 .top-bar {
                     flex-direction: column;
                     align-items: center;
-                    padding: 16px 16px 12px;
+                    padding-bottom: 12px;
                     gap: 12px;
                 }
+
                 .name {
                     font-size: 15px;
                 }
+
                 .socials {
                     gap: 14px;
                 }
+
                 .socials a {
                     width: 40px;
                     height: 40px;
                 }
+
                 .socials a svg {
                     width: 20px;
                     height: 20px;
                 }
+
                 .title {
                     padding: 0 20px;
                 }
+
                 .subtitle {
                     font-size: 13px;
                     letter-spacing: 0.3em;
                 }
+
                 .footer {
                     padding: 16px;
                     padding-bottom: max(16px, env(safe-area-inset-bottom));
                 }
             }
-            /* Safe area insets for notched devices */
-            .top-bar {
-                padding-top: max(24px, env(safe-area-inset-top));
-                padding-left: max(32px, env(safe-area-inset-left));
-                padding-right: max(32px, env(safe-area-inset-right));
-            }
-            @keyframes fadeIn {
+
+            @keyframes fade-in {
                 to {
                     opacity: 1;
                 }

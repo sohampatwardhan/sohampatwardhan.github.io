@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.0] - 2026-10-31
+
+### Changed
+- Typeface is now Space Grotesk for all site text, loaded as a variable font (weights 300–700) from Google Fonts with preconnect and `display=swap`
+- Fallback stack is system-ui, -apple-system, Segoe UI, Roboto, sans-serif
+- Welcome title uses weight 300, the lightest weight Space Grotesk includes
+- Header stacks below 680px so the wider name stays clear of the social icons
+
 ## [0.6.0] - 2026-02-25
 
 ### Added
